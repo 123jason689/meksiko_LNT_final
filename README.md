@@ -1,64 +1,59 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+Back-End Development
+ LnT Final Project
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+PT Meksiko telah merekrut kamu untuk bekerja di perusahaannya! Setelah melihat proyek kamu sebelumnya, Pak Raja senang dengan hasil kerjamu. Karena hal tersebut Pak Raja mempercayakan sebuah proyek kepada kamu. Proyek ini berupa aplikasi pendataan barang berbasis web yang digunakan sebagai website penjualan barang-barang. Berikut merupakan penjelasan spesifik mengenai fitur yang diinginkan oleh Pak Raja:
 
-## About Laravel
+Proyek website yang harus dikerjakan oleh kamu adalah sebuah website aplikasi pendataan barang. Perpustakaan tersebut ingin website dengan fitur-fitur sebagai berikut:
+Pak Raja menginginkan adanya dua role di dalam aplikasi tersebut. Role pertama adalah admin. Admin dapat melakukan operasi Create, Read, Update, dan Delete terhadap barang-barang yang terdapat di website tersebut. Operasi tersebut sudah termasuk memasukkan gambar / foto barang. Berikut adalah data-data yang perlu dimasukkan ke dalam database:
+Kategori Barang, required string
+Nama Barang (minimal 5 huruf, maksimal 80 huruf), required string
+Harga Barang (harus dimulai dengan Rp. dari display-nya (HTML)), required integer
+Jumlah Barang (harus menggunakan angka), required integer
+Foto Barang 
+Untuk relationship-nya, buatlah minimal satu kategori barang dengan barang yang diinput.
+Role kedua adalah user. User bisa melihat semua barang, cetak faktur seperti struk barang. Pak Raja ingin tampilan aplikasi tersebut dapat menampilkan semua barang yang ada di database (sejenis katalog):
+Kategori Barang, required string
+Nama Barang (minimal 5 huruf, maksimal 80 huruf), required string
+Harga Barang (harus dimulai dengan Rp. dari displaynya (HTML)), required integer
+Jumlah Barang, (harus angka), required integer
+Foto Barang
+Button untuk memasukkan barang ke faktur (keranjang)
+Pada bagian faktur, Pak Raja ingin kalian membuat spesifikasi sesuai dengan yang di bawah ini:
+Buat page khusus untuk cetak faktur
+Generate Nomor Invoice (otomatis)
+Kategori Barang
+Nama barang dan kuantitas (contoh, Bakmi x12 dan jumlah dapat diatur sendiri)
+Alamat Pengiriman,(minimal 10 huruf, maksimal 100 huruf) (input sendiri), required string
+Kode Pos (harus 5 digit angka, pake string aja) (input sendiri), required integer
+Display subtotal harga setiap barang
+Display total harga semua barang (menggunakan rumus matematika)
+Simpan data faktur
+Selain itu, Pak Raja menginginkan adanya halaman Login dan Register untuk user biasa. Sedangkan untuk admin hanya dapat di registrasi secara manual (lewat database). Data-data yang terdapat di dalam database (user dan admin) akan memiliki bentuk seperti berikut ini:
+Data User Biasa:
+Nama Lengkap (Minimal  3 huruf, Maksimal 40 huruf), required string
+Email (harus mempunyai @gmail.com), required string
+Password (minimal 6 huruf, maksimal 12 huruf), required string
+Nomor Handphone (harus diawali dengan 08), required string
+Submit Button
+Data Admin:
+Nama Lengkap, required string
+ID Admin (1 admin saja dengan nama bebas), required string
+Email (format @gmail.com), required string
+Password (minimal 6 huruf, maksimal 12 huruf), required string
+Nomor HP (harus diawali dengan 08), required string
+Submit Button
+Pak Raja juga ingin menginginkan adanya validasi agar tidak diserang oleh perusahaan kompetitornya. Oleh karena itu, Pak Raja memberikan bagian-bagian yang perlu kalian perhatikan dalam pembuatan proyek ini.
+Kalau user biasa (role User) mencoba masuk ke page CRUD (Admin), maka ia akan di redirect ke halaman view barang user. (Middleware)
+Jika barang sudah habis, muncul validasi “Barang sudah habis, silakan tunggu hingga barang di-restock ulang” atau semacamnya.
+	
+Deadline dari proyek tersebut adalah pada tanggal 15 Februari 2024, pukul 23.59 WIB, tetapi apabila kamu menyelesaikannya sebelum tanggal 15 Januari 2024, pukul 23:59 WIB, Pak Raja akan mempertimbangkan untuk memberikan kamu bonus. Proyek ini dikumpulkan dengan ketentuan sebagai berikut:
+Menggunakan framework Laravel versi 9
+Dalam bentuk link repository github dan dikirim ke Email LnT (lntalsut@bncc.net) dan di CC ke email Praetorian 
+Subject pengumpulan email LnTFinalProject_[Kelas]_[Nama Lengkap] 
+(contoh: LnTFinalProject_BE-Z_Vannessa Lim)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Bila ada hal yang tidak dimengerti bisa ditanya kepada OA member care atau bisa bertanya langsung dengan praetorian. 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Good Luck, 
+Best Regards, 
+Pak Raja
