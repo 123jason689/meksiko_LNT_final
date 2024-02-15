@@ -1,0 +1,130 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: azure;
+}
+
+.resetmp{
+    padding: 0;
+    margin: 0;
+}
+
+.bblac{
+    border: 3px solid black;
+}
+
+#mainlogo
+{
+    width: 5vw;
+}
+
+#logocont{
+    background-color: #58BAE0;
+    border-radius: 50%;
+    margin: 5px 3px 5px 25px;
+}
+
+#herologo{
+    height: auto;
+}
+
+.hero{
+    height: fit-content;
+    width: fit-content;
+}
+
+#brand{
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+#brand h1{
+    font-size: 4em;
+    letter-spacing: -4.3px;
+    color: black;
+    text-decoration: underline solid black;
+
+}
+
+nav{
+    background-color: #E0D958;
+    height: 10vh;
+}
+
+.nav-link{
+    color: #58BAE0;
+    letter-spacing: -3px;
+    transition: 0.3;
+}
+
+.nav-link.active{
+    color: #E05874 !important;
+}
+
+.nav-link:hover, .nav-link:focus, .nav-link i:hover, .nav-link i:focus{
+    color: #E05874;
+}
+
+#logins{
+    display: flex;
+    align-items: center;
+    border-radius: 3em;
+    padding-right: 1em;
+    padding-left: 1em;
+    background: linear-gradient(to right, #E0D958, #58b9e06b);
+    transition: 0.3s;
+}
+
+#logins:hover{
+    background: linear-gradient(to bottom, #E0D958, #e058738b);
+}
+
+.round-btn{
+	font-size: 2vw;
+	border: 4px black solid;
+	border-radius:3em;
+	padding:3px 7px 3px 7px;
+	transition: 0.3s;
+	text-decoration:none;
+	color:black;
+}
+
+.round-btn:hover, .round-btn:focus{
+	background-color: gray;
+	color: white;
+}
+
+.alerts{
+    /* font-size: 1.3em; */
+    /* font-weight:700;
+    padding: 0;
+    margin: 0;
+    margin-top: 5px; */
+    position: relative;
+    /* background: #0084FF; */
+    border-radius: 0.4em;
+    /* color: white; */
+    padding: 3px;
+    display: inline-block;
+    width: 100%;
+    margin-top: 18px;
+}
+
+.alerts::after{
+    content: '';
+    display: block;
+    position: absolute;
+
+    top: -30px;
+    left: 10px;
+
+    width: 0;
+    height: 0;
+    border-bottom: 30px solid black;
+    border-right: 17px solid transparent;
+    border-left: 2px solid transparent;
+}

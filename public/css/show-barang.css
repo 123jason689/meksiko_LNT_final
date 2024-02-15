@@ -1,0 +1,182 @@
+
+#nofound{
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    font-size: 5vw;
+    color: #b4bec99f;
+    user-select: none;
+    position: absolute;
+    z-index: -3;
+}
+
+.card-img-top{
+    width: inherit;
+    height: 14rem;
+    background-color: darkslategray;
+}
+
+.card-add{
+    background-color: rgb(205,205,205) !important;
+    transition: 0.3s;
+}
+
+.card-add:hover{
+    color: blanchedalmond !important;
+    background-color: #3B3C40 !important;
+}
+
+.namabrg{
+    line-height: 18px;
+    font-weight: 700;
+}
+
+.infotags{
+    text-decoration: transparent;
+    color: #3B3C40;
+    transition: 0.3s;
+    font-weight: 400;
+}
+
+.kateg{
+    text-decoration: transparent;
+    color: #3B3C40;
+    transition: 0.3s;
+    font-weight: 400;
+}
+
+.kateg:hover{
+    color: #8c909fb2;
+    text-decoration: underline;
+}
+
+.jmlh{
+    font-weight: 500;
+    font-size: 0.8em;
+    color: #3b3c407e;
+}
+
+.harga{
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #3B3C40;
+}
+
+.btn-go{
+    /* margin-top: 1em; */
+	font-size: 1em;
+	padding:0.3em 1em 0.3em 1em;
+    font-weight: 600;
+	border-radius: 5rem;
+	background-color:#51cbfcf0;
+	transition:0.3s;
+	text-align:center;
+}
+
+.btn-go:hover{
+	background-color: #7dbfd976;
+	letter-spacing: 0.03em;
+}
+
+.edit{
+    border: 1.5px solid black;
+    text-decoration: none;
+    color: black;
+    background-color:rgba(253, 186, 62, 0.908) !important;
+    font-size: 1.7em;
+}
+
+.edit:hover{
+    background-color: #7dbfd976 !important;
+}
+
+.delet{
+    border: 1.5px solid black;
+    text-decoration: none;
+    color: black;
+    font-size: 1.7em;
+    background-color:rgba(223, 101, 87, 0.908) !important;
+}
+
+.delet:hover{
+    background-color: #7dbfd976 !important;
+}
+
+.scroll-bg{
+    /* background-color: rgba(128, 128, 128, 0.386); */
+    width: inherit;
+    /* margin: 10% auto; */
+    /* padding: 30px; */
+    border-radius: 1.5em;
+    border: 2px solid black;
+    overflow: hidden;
+}
+
+.scroll-div{
+    width: inherit;
+    background-color: white;
+    height: 300px;
+    overflow: hidden;
+    overflow-y: scroll;
+    /* border-radius: 2em; */
+}
+
+.scroll-object{
+    padding: 1em;
+    font-size: 0.9em;
+}
+
+.add-card{
+    border-radius: 1rem;
+    height: 25em;
+    background-color:floralwhite;
+}
+
+.countss{
+    width: 3em;
+    height: 1em;
+    background-color: azure;
+    font-size: 20px;
+    margin: 0 10px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 0.3em;
+    outline: none;
+    transition: 0.3s;
+}
+
+#count:hover{
+    background-color: #c9c0a6;
+    color: white;
+}
+
+#totals h2{
+    font-size: 1.4em;
+}
+
+#totals{
+    margin-top: 1.2em;
+}
+
+#subtotal{
+    display: inline;
+    font-size: 1.4em;
+}
+
+.trasher{
+    color: black;
+    font-size: 1.5em;
+    display: inline;
+    width: fit-content;
+    text-align: center;
+    /* text-justify: center; */
+}
+
+.trasher:hover{
+    color: rgb(144, 144, 144);
+    font-size: 1.2em;
+
+}
+
+

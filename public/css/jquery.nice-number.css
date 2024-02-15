@@ -1,0 +1,34 @@
+.nice-number {
+  display: flex;
+  width: fit-content;
+  justify-content: stretch;
+}
+
+.nice-number input {
+  vertical-align: middle;
+  -moz-appearance: textfield;
+  box-sizing: content-box;
+  margin: 0;
+  text-align: center;
+}
+
+.nice-number input::-webkit-inner-spin-button,
+.nice-number input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.nice-number button{
+    width: 2.5em;
+    border-radius: 0.5em;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+    background-color: azure;
+    transition: 0.3s;
+}
+
+.nice-number button:hover{
+    background-color: #c9c0a6;
+    color: white;
+}
+
