@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
+use App\Models\User;
 use App\Models\barang;
 use App\Models\kategori;
-use App\Models\User;
+use App\Models\datafaktur;
+use App\Models\data_faktur;
 use Illuminate\Http\Request;
-use Illuminate\Auth\Events\Validated;
 use Psy\Readline\Hoa\Console;
-use PDF;
 
+use Illuminate\Auth\Events\Validated;
 use function PHPUnit\Framework\isEmpty;
 
 class fakturController extends Controller
@@ -36,23 +38,50 @@ class fakturController extends Controller
 
     public function printfaktur(Request $request){
         $user = auth()->user();
-        $barangss = [];
+        $barangss = collect();
         foreach ($user->barangs as $barang) {
             if(in_array($barang->id, $request->barangid)){
-                array_push($barangss,$barang);
+                $barangss->push($barang);
             }
         }
 
-        $noinv = 'INV-' . date('Ymd') . '-' . str_pad(rand(0, 999), 3, "0", STR_PAD_LEFT);
+        $noinv = 'INV-' . date('Ymd') . '-' . str_pad(rand(0, 999), 3, "0", STR_PAD_LEFT) . sprintf('%04d', $user->id);
+
+        $date = date('l, d-m-Y');
+
+        // $jsondata = $barangss->map(function($barang){
+        //     return $barang->toJson();
+        // });
+
+        // $stringjson = $jsondata->toJson();
+
+        $stringjson = $barangss->map(function($barang){
+            return $barang->toArray();
+        })->toJson();
+
+
+        $fakturs = datafaktur::create([
+            'user_id' => $user->id,
+            'date' => $date,
+            'nomor_invoice' => $noinv,
+            'user_name' => $user->name,
+            'user_email' => $user->email,
+            'address' => $request->address,
+            'kodepos' => $request->kodepos,
+            'user_phone_number' => $user->phone_number,
+            'data_item_json' => $stringjson,
+        ]);
 
         return view('faktur', [
             'title' => 'Meksiko - Facture',
             'page' => 'faktur',
             'user' => $user,
-            'barangs' =>  $barangss,
+            'barangs' => $barangss,
             'noinv' => $noinv,
             'address' => $request->address,
             'kodepos' => $request->kodepos,
+            'date' => $date,
+            'fakturid' => $fakturs->id,
             // 'barangs' =>
         ]);
     }
@@ -74,8 +103,7 @@ class fakturController extends Controller
         ]);
     }
 
-    public function preventOrderOverflow(){
-        $user = auth()->user();
+    public function preventOrderOverflow(User $user){
         $barang = $user->barangs;
         $marked = [];
         foreach ($barang as $brg) {
@@ -91,6 +119,7 @@ class fakturController extends Controller
         }
         return $marked;
     }
+
     // untuk update data count setiap user pergi dari page show-faktur
     public function updateOutOfBound(Request $request){
         $user = $request->user();
@@ -112,7 +141,7 @@ class fakturController extends Controller
         }
 
 
-        $this->preventOrderOverflow();
+        $this->preventOrderOverflow($user);
 
         if($request->page == 'faktur'){
             // kurangi jumlah barang yang sudah masuk faktur
@@ -132,15 +161,29 @@ class fakturController extends Controller
 
     public function downloadFaktur(Request $request){
         $user = User::find($request->user);
-        // $barangs = barang::find($request->barangid);
-        $barangss = [];
-        foreach ($user->barangs as $barang) {
-            if(in_array($barang->id, $request->barangid)){
-                array_push($barangss,$barang);
+        $fakturs = $user->datafakturs()->get();
+        $faktur = null;
+        foreach ($fakturs as $fk ) {
+            error_log($request->fakturid);
+            if($fk->id == $request->fakturid){
+                $faktur = $fk;
             }
         }
 
-        $totals = collect($barangss)->sum(fn($barang) => $barang->harga * $barang->pivot->frequency);
+        $barangs = $this->jsonparsefaktur($faktur);
+        // $barangs = barang::find($request->barangid);
+        $barangss = collect();
+        foreach ($barangs as $barang) {
+            if(in_array($barang->id, $request->barangid)){
+                $barangss->push($barang);
+            }
+        }
+
+        // if($request->pagetype == 'prev'){
+            $totals = $barangss->sum(fn($barang) => $barang->harga * $barang['pivot']['frequency']);
+        // } else{
+            // $totals = $barangss->sum(fn($barang) => $barang->harga * $barang->pivot->frequency);
+        // }
 
         $data = [
             'title' => 'Facture-' . $request->noinv,
@@ -151,6 +194,7 @@ class fakturController extends Controller
             'kodepos'=> $request->kodepos,
             'totals' => $totals,
             'tax' => 10,
+            'date' => $request->date,
         ];
 
         // $pdf = PDF::loadView('print-faktur', $data);
@@ -158,7 +202,8 @@ class fakturController extends Controller
         //sudah jam 3.20 AM setelah bingung pusing dan stress blade html tidak bisa di download ke pdf
         // berhenti pada return terakhir di donload()
         // web loading terus menerus tanpa henti sampai laravel shutdown karena melebihi 60 detik
-        return view('print-faktur', $data);
+        return view('print-fakturprev', $data);
+
         // bisa di SS aja :)
     }
 
@@ -168,5 +213,53 @@ class fakturController extends Controller
         return response()->json(['success'=>true]);
     }
 
+    public function previewFaktur($datafaktur){
+        $faktur = datafaktur::find($datafaktur);
 
+        $user = User::find($faktur->user_id);
+        // $coll = collection
+        $barangs = $this->jsonparsefaktur($faktur);
+
+        foreach ($barangs as $barang) {
+            error_log($barang);
+        }
+
+        // $barangs = barang::hydrate($barangss);
+
+        return view('fakturprev', [
+            'title' => 'Meksiko - Facture',
+            'page' => 'faktur',
+            'user' => $user,
+            'barangs' => $barangs,
+            'noinv' => $faktur->nomor_invoice,
+            'address' => $faktur->address,
+            'kodepos' => $faktur->kodepos,
+            'date' => $faktur->date,
+            'fakturid' => $faktur->id,
+            // 'barangs' =>
+        ]);
+    }
+
+    public function userFaktur(){
+        $user = auth()->user();
+
+        return view('history', [
+            'title' => 'Meksiko - History',
+            'page' => 'faktur',
+            'fakturs' => $user->datafakturs,
+        ]);
+    }
+
+
+    public function jsonparsefaktur($faktur){
+        $barangss = json_decode($faktur->data_item_json, true);
+        $barangs = array_map(function ($item) {
+            $barang = new barang; // replace with your actual Barang model namespace
+            foreach ($item as $key => $value) {
+                $barang->$key = $value;
+            }
+            return $barang;
+        }, $barangss);
+        return $barangs;
+    }
 }

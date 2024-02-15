@@ -19,7 +19,7 @@ class registerController extends Controller
 			'name'=>'required|min:3|max:40',
 			'email'=>'required|unique:users|email:dns',
 			'password'=>'required|min:6|max:12',
-			'phone_number'=>'required|regex:/^08\d{6,10}$/'
+			'phone_number'=>'required|numeric|regex:/^08\d{6,10}$/' // dimulai dari 08 dan panjangnya 8 hingga 12 angka (termasuk 08)
 		]);
 
 		$validData['password'] = bcrypt($validData['password']);

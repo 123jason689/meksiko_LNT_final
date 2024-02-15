@@ -48,3 +48,31 @@
     overflow: hidden;
     overflow-y: scroll;
 }
+
+.history{
+    height: 17vh;
+    width: 17vh;
+    position: absolute;
+    text-decoration: none;
+    color: black;
+    transition: 0.3s;
+    border-radius: 100%;
+}
+
+.history:hover{
+    color: rgb(147, 147, 147);
+}
+
+.history i{
+    font-size: 5em;
+    line-height: 90%;
+}
+
+.history h1{
+    font-size: 2em;
+    line-height: 95%;
+    user-select: none;
+}
+
+
+

@@ -54,8 +54,8 @@
                             <tr>
                                 <td>{{ $barang->nama }}</td>
                                 <td>Rp {{ number_format($barang->harga, 0, ',', '.') }},00</td>
-                                <td>{{ $barang->pivot->frequency }}</td>
-                                <td>Rp {{ number_format($barang->harga * $barang->pivot->frequency, 0, ',', '.') }},00</td>
+                                <td>{{ $barang['pivot']['frequency']}}</td>
+                                <td>Rp {{ number_format($barang->harga * $barang['pivot']['frequency'], 0, ',', '.') }},00</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -70,7 +70,7 @@
     <div class="row facture-total d-flex justify-content-between">
         <div class="col-3">
             <h2>Total</h2>
-            <p class="text-truncate">Rp {{ number_format(collect($barangs)->sum(fn($barang) => $barang->harga * $barang->pivot->frequency), 0, ',', '.') }},00</p>
+            <p class="text-truncate">Rp {{ number_format(collect($barangs)->sum(fn($barang) => $barang->harga * $barang['pivot']['frequency']), 0, ',', '.') }},00</p>
         </div>
         <form action="/download-faktur" target="_blank" method="POST" class="col-3 d-flex justify-content-center align-items-center">
             @csrf

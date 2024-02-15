@@ -59,5 +59,7 @@ Route::POST('/print-faktur', [fakturController::class, 'printfaktur'])->middlewa
 Route::POST('/update-faktur', [fakturController::class, 'updateOutOfBound'])->middleware('auth');
 Route::get('/remove-barang-faktur/{barang:id}/{user:id}', [fakturController::class, 'removebarang'])->middleware('auth');
 Route::POST('/download-faktur', [fakturController::class, 'downloadFaktur'])->middleware('auth');
+Route::get('/preview-faktur/{datafaktur}', [fakturController::class, 'previewFaktur'])->middleware('auth');
+Route::get('/user-faktur', [fakturController::class, 'userFaktur'])->middleware('auth');
 
 Route::get('/manage', [adminController::class, 'showmanage'])->middleware('admin');

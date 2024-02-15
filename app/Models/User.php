@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\barang;
 use App\Models\admin;
+use App\Models\barang;
+use App\Models\datafaktur;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -52,4 +53,8 @@ class User extends Authenticatable
 	public function admin(){
 		return $this->hasOne(admin::class);
 	}
+
+    public function datafakturs(){
+        return $this->hasMany(datafaktur::class);
+    }
 }

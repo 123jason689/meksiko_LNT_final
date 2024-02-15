@@ -10,6 +10,12 @@
 <div hidden class="alert alert-success nunito" style="font-weight: 600; font-size:1.2em; position: absolute; width:100%;">
     <p class="resetmp"><i class="bi bi-bag-check-fill"></i> Item deleted successfully !</p>
 </div>
+
+<a href="/user-faktur" class="history resetmp d-flex flex-column justify-content-center align-items-center">
+    <i class="bi bi-clock-history resetmp"></i>
+    <h1 class="resetmp ">History</h1>
+</a>
+
 <form class="container mt-1 px-5 facture-container submition" action="/update-faktur" method="POST">
     @csrf
     <div class="row mt-2 headers">
@@ -201,6 +207,7 @@
                 url: '/remove-barang-faktur/' + barangid +  '/' + {{ auth()->user( )->id }},
                 success: function() {
                     console.log('Item delete was successful !');
+                    updateTotal();
                     $('.alert').show();
                     setTimeout(() => {
                         $('.alert').fadeOut('slow');
