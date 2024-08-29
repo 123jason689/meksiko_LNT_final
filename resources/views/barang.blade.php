@@ -17,18 +17,20 @@
             <div class="row resetmp">
                 <img style="width: 25em; height: 25em; border-radius:1rem;" src="{{ Storage::disk('public')->exists('items-image/'.$barang->foto) ? asset('storage/items-image/'.$barang->foto) : asset('img/DEFAULT-PLACEHOLDER-2213.png') }}" alt="">
             </div>
-            <div class="row resetmp mt-5" style="width: 100%">
-                <div class="col resetmp d-flex justify-content-center align-items-center ">
-                    <a href="/update-items/{{ $barang->id }}" class="btn-go edit" style="width: 6em">Edit</a>
+            @can('is_admin')
+                <div class="row resetmp mt-5" style="width: 100%">
+                    <div class="col resetmp d-flex justify-content-center align-items-center ">
+                        <a href="/update-items/{{ $barang->id }}" class="btn-go edit" style="width: 6em">Edit</a>
+                    </div>
+                    <div class="col resetmp d-flex justify-content-center align-items-center ">
+                        <form action="/delete-items/{{ $barang->id }}" method="POST">
+                            @csrf
+                            @method("DELETE")
+                            <button type="submit" class="btn-go delet" style="width: 6em">Delete</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="col resetmp d-flex justify-content-center align-items-center ">
-                    <form action="/delete-items/{{ $barang->id }}" method="POST">
-                        @csrf
-                        @method("DELETE")
-                        <button type="submit" class="btn-go delet" style="width: 6em">Delete</button>
-                    </form>
-                </div>
-            </div>
+            @endcan
         </div>
         <div class="col-5 ">
             <h5 class="card-title nunito resetmp mx-2 mt-3 mb-4 " style="font-size: 2em; font-weight: 700;">{{ $barang->nama }}</h5>

@@ -88,6 +88,9 @@ class fakturController extends Controller
 
     public function showfaktur(){
         $user = auth()->user();
+        if(!$user){
+            return redirect()->route('login');
+        }
         $barang = $user->barangs;
         if(empty($barang)){
             $barang = [];
@@ -130,10 +133,7 @@ class fakturController extends Controller
             ]);
         }
 
-        if($request->page == 'faktur'){ //kembali tidur jam dua besok kelas pagi karena satu hal menyesatkan ini
-            //dari tadi bingung kenapa request on window before unload tidak bisa di pake
-            // dari kemaren udah kotak katik, ternyata gara gara laravel ->validate throw error
-            // gak bisa di tangkep kalo pake request dari ajax, solusinya bikin if wkwkkwkwkwkwkw
+        if($request->page == 'faktur'){
             $request->validate([
                 'address' => 'required',
                 'kodepos' => 'required',

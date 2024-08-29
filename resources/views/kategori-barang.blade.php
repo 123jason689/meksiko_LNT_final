@@ -29,7 +29,7 @@
                 <img src="{{ Storage::disk('public')->exists('items-image/'.$barang->foto) ? asset('storage/items-image/'.$barang->foto) : asset('storage/items-image/DEFAULT-PLACEHOLDER-2213.png') }}" class="card-img-top" alt="An image of {{ $barang->nama }}">
                 <div class="card-body">
                     <h5 class="card-title nunito resetmp namabrg">{{ (strlen($barang->nama)>15) ? substr($barang->nama, 0, 10) . " ... " . substr($barang->nama, -5) : $barang->nama }}</h5>
-                    <a href="/categories/{{ $barang->kategori_id }}" class="kateg ">
+                    <a href="/category/{{ $barang->kategori_id }}" class="kateg ">
                         <small class="poppins">{{ $barang->kategori->name }}</small>
                     </a>
                     <h6 class="card-text poppins harga resetmp mt-3 ">Rp. {{ number_format($barang->harga, 0, ',', '.') }},00</h6>
