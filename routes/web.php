@@ -35,6 +35,9 @@ Route::POST('/logout',[loginController::class, 'logout'])->middleware('auth');
 Route::get('/register', [registerController::class, 'register'])->middleware('guest');
 Route::POST('/register', [registerController::class, 'store'])->middleware('guest');
 
+Route::get('/dashboard', []);
+
+
 Route::get('/items', [barangController::class, 'items'])->middleware('auth');
 Route::get('/items/{barang:id}', [barangController::class, 'showItem'])->middleware('auth');
 

@@ -106,13 +106,46 @@
         </div>
         <div class="col-3 d-flex justify-content-end align-items-center">
             <input type="hidden" name="page" id="page" value="default">
-            <button type="submit" class="btn-go">Confirm and Print Facture</button>
+            <button type="button" class="btn-go" id="dwnbtn" data-bs-toggle="modal" data-bs-target="#Modal">Print Facture</button>
+
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="ModalLabel">Are You Sure <i class="bi bi-exclamation-square"></i></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    By clicking the confirm button below, you will <span style="color:crimson;">complete the purchase</span> of the items in your cart.
+                    The invoice will be printed and can be downloaded after confirmation.
+                    <br>
+                    <br>
+                    <h5>Do you wish to proceed ?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-go" data-bs-dismiss="modal" style="background-color: red;">Close</button>{{-- maaf inline, file nya jauh --}}
+                    <button type="submit" class="btn-go">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </form>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{{ asset('js/jquery.nice-number.js') }}"></script>
 <script>
+
+    // const myModal = document.getElementById('.modal')
+    // const myInput = document.getElementById('#dwnbtn')
+
+    // myModal.addEventListener('shown.bs.modal', () => {
+    //     myInput.focus()
+    // })
+
     $(function(){
         $('input[type="number"].incdec').niceNumber({
             onIncrement: updateSubtotal,
@@ -243,8 +276,6 @@
 
 
     });
-
-
 
 
 </script>

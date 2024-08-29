@@ -13,7 +13,11 @@ use Illuminate\Http\Request;
 use Psy\Readline\Hoa\Console;
 
 use Illuminate\Auth\Events\Validated;
+use PhpOption\None;
+
+use function PHPSTORM_META\type;
 use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\isNull;
 
 class fakturController extends Controller
 {
@@ -127,6 +131,9 @@ class fakturController extends Controller
     // untuk update data count setiap user pergi dari page show-faktur
     public function updateOutOfBound(Request $request){
         $user = $request->user();
+        if(is_null($request->barangid)){
+            return redirect('/items')->with('nullcart', "You haven't add any item to your cart yet");
+        }
 
         foreach ($request->barangid as $val) {
             $user->barangs()->updateExistingPivot($val, [

@@ -13,6 +13,12 @@
     </div>
     @endif
 @endcan
+@if (session('nullcart'))
+    <div class="alert alert-success nunito" style="font-weight: 600; font-size:1.2em; position: absolute; width:100%;">
+        <i class="bi bi-exclamation-triangle-fill"></i> {{ session('nullcart') }}
+    </div>
+@endif
+
 
 <div class="container mt-5 ">
     <div class="row mb-2">
