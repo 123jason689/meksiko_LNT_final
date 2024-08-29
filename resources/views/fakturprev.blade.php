@@ -72,9 +72,10 @@
             <h2>Total</h2>
             <p class="text-truncate">Rp {{ number_format(collect($barangs)->sum(fn($barang) => $barang->harga * $barang['pivot']['frequency']), 0, ',', '.') }},00</p>
         </div>
-        <form action="/download-faktur" target="_blank" method="POST" class="col-3 d-flex justify-content-center align-items-center">
+        <form action="/download-faktur" target="_self" method="POST" class="col-3 d-flex justify-content-center align-items-center">
             @csrf
             <input type="hidden" name="noinv"  value="{{ $noinv }}">
+            <input type="hidden" name="kodepos"  value="{{ $kodepos }}">
             <input type="hidden" name="user"  value="{{ $user->id }}">
             <input type="hidden" name="address" value="{{ $address }}">
             @foreach ($barangs as $barang)

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\User;
 use App\Models\barang;
 use App\Models\kategori;
 use App\Models\datafaktur;
 use App\Models\data_faktur;
+use Error;
 use Illuminate\Http\Request;
 use Psy\Readline\Hoa\Console;
 
@@ -164,11 +165,11 @@ class fakturController extends Controller
         $fakturs = $user->datafakturs()->get();
         $faktur = null;
         foreach ($fakturs as $fk ) {
-            error_log($request->fakturid);
             if($fk->id == $request->fakturid){
                 $faktur = $fk;
             }
         }
+
 
         $barangs = $this->jsonparsefaktur($faktur);
         // $barangs = barang::find($request->barangid);
@@ -178,9 +179,9 @@ class fakturController extends Controller
                 $barangss->push($barang);
             }
         }
-
+        // error_log($barangss);
         // if($request->pagetype == 'prev'){
-            $totals = $barangss->sum(fn($barang) => $barang->harga * $barang['pivot']['frequency']);
+            $totals = $barangss->sum(fn($barang) => $barang->harga * $barang->pivot['frequency']);
         // } else{
             // $totals = $barangss->sum(fn($barang) => $barang->harga * $barang->pivot->frequency);
         // }
@@ -188,7 +189,9 @@ class fakturController extends Controller
         $data = [
             'title' => 'Facture-' . $request->noinv,
             'barangs' => $barangss,
-            'user' => $user,
+            'username' => $user->name,
+            'useremail' => $user->email,
+            'userphone' => $user->phone_number,
             'noinv' => $request->noinv,
             'address' => $request->address,
             'kodepos'=> $request->kodepos,
@@ -196,15 +199,15 @@ class fakturController extends Controller
             'tax' => 10,
             'date' => $request->date,
         ];
+        set_time_limit(0);
+        // $html = view('print-faktur', $data)->render();
+        // file_put_contents(public_path('test.html'), $html);
+        // $pdf = Pdf::loadHtml($html);
+        // return $pdf->stream('invoice-'.$request->noinv.'.pdf');
 
-        // $pdf = PDF::loadView('print-faktur', $data);
-        // return $pdf->download('invoice-'.$request->noinv.'.pdf');
-        //sudah jam 3.20 AM setelah bingung pusing dan stress blade html tidak bisa di download ke pdf
-        // berhenti pada return terakhir di donload()
-        // web loading terus menerus tanpa henti sampai laravel shutdown karena melebihi 60 detik
-        return view('print-fakturprev', $data);
-
-        // bisa di SS aja :)
+        $pdf = Pdf::loadView('print-faktur', $data);
+        return $pdf->download('invoice-'.$request->noinv.'.pdf');
+        // return view('print-fakturprev', $data);
     }
 
     public function removebarang(barang $barang, User $user){

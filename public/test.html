@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facture {{ $noinv }}</title>
+    <title>Facture INV-20240829-1540003</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    {{-- Harus pake public_path karena asset berkerja untuk pengambilan file di tahap proses website, sedangkan public_path berada di tahap proses server --}}
-    {{-- Dom PDF bekerja di tahap server dengan me-load semua html tag dan asset dari server, bukan web --}}
-    {{-- Nyalakan extension "extension=gd" pada file php.ini --}}
-    <link rel="stylesheet" href="{{ public_path('css/main.css') }}">
-    <link rel="stylesheet" href="{{ public_path('css/fonts.css') }}">
+    
+    
+    
+    <link rel="stylesheet" href="C:\Users\jason\Documents\Programming Project\Laravel\LNT FInal\meksiko_LNT_final\public\css/main.css">
+    <link rel="stylesheet" href="C:\Users\jason\Documents\Programming Project\Laravel\LNT FInal\meksiko_LNT_final\public\css/fonts.css">
     <style>
         body{
             background-color: #F6F6F6;
@@ -140,7 +140,7 @@
                 <div class="col-6">
                     <div id="brandf" class="">
                         <div id="logocontf" class="">
-                            <img src="{{ public_path('img/main-logo.png') }}" alt="Logo mexico" id="mainlogof" class="">
+                            <img src="C:\Users\jason\Documents\Programming Project\Laravel\LNT FInal\meksiko_LNT_final\public\img/main-logo.png" alt="Logo mexico" id="mainlogof" class="">
                         </div>
                         <h1 class="protest-g ">Meksiko</h1>
                     </div>
@@ -158,17 +158,17 @@
         <div class="body-section">
             <div class="row">
                 <div class="col-6">
-                    <h2 class="heading text-truncate">Invoice No.: {{ $noinv }}</h2>
-                    {{-- <p class="sub-heading">Tracking No. fabcart2025 </p> --}}
-                    <p class="sub-heading text-truncate">Order Date: {{ $date }} </p>
-                    <p class="sub-heading text-truncate">Email Address: {{ $useremail }} </p>
+                    <h2 class="heading text-truncate">Invoice No.: INV-20240829-1540003</h2>
+                    
+                    <p class="sub-heading text-truncate">Order Date: Thursday, 29-08-2024 </p>
+                    <p class="sub-heading text-truncate">Email Address: jasmirldoge@gmail.com </p>
                 </div>
                 <div class="col-6">
-                    <p class="sub-heading text-truncate">Full Name: {{ $username }} </p>
-                    <p class="sub-heading">Address: {{ $address }} </p>
-                    <p class="sub-heading text-truncate">Postal Code: {{ $kodepos }} </p>
-                    <p class="sub-heading text-truncate">Phone Number: {{ $userphone }} </p>
-                    {{-- <p class="sub-heading">City,State,Pincode:  </p> --}}
+                    <p class="sub-heading text-truncate">Full Name: Jason Melvin Hartono </p>
+                    <p class="sub-heading">Address: Jl. Mozart Utara 2 No.35, Medang, Kec. Pagedangan, Kabupaten Tangerang, Banten 15334 </p>
+                    <p class="sub-heading text-truncate">Postal Code: 10003 </p>
+                    <p class="sub-heading text-truncate">Phone Number: 081290773928 </p>
+                    
                 </div>
             </div>
         </div>
@@ -186,30 +186,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if(isset($barangs) && $barangs->count() > 0)
-                        @foreach ($barangs as $barang)
-                            <tr>
-                                {{-- <p>{{ $barang }}</p> --}}
-                                <td class="text-truncate">{{ $barang->nama }}</td>
-                                <td class="text-truncate">Rp {{ number_format($barang->harga, 0, ',', '.') }},00</td>
-                                <td class="text-truncate">{{ $barang->pivot['frequency'] }}</td>
-                                <td class="text-truncate">Rp {{ number_format($barang->harga * $barang->pivot['frequency'], 0, ',', '.') }},00</td>
+                                                                        <tr>
+                                
+                                <td class="text-truncate">accusantium quia</td>
+                                <td class="text-truncate">Rp 55.615.652,00</td>
+                                <td class="text-truncate">5</td>
+                                <td class="text-truncate">Rp 278.078.260,00</td>
                             </tr>
-                        @endforeach
-                    @else
-                        <p>Items not listed.</p>
-                    @endif
-                    <tr>
+                                                    <tr>
+                                
+                                <td class="text-truncate">beatae officiis neque ut exercitationem ullam</td>
+                                <td class="text-truncate">Rp 80.448.562,00</td>
+                                <td class="text-truncate">6</td>
+                                <td class="text-truncate">Rp 482.691.372,00</td>
+                            </tr>
+                                                    <tr>
+                                
+                                <td class="text-truncate">saepe occaecati ut laborum</td>
+                                <td class="text-truncate">Rp 95.232.136,00</td>
+                                <td class="text-truncate">6</td>
+                                <td class="text-truncate">Rp 571.392.816,00</td>
+                            </tr>
+                                                                <tr>
                         <td colspan="3" class="text-right pe-4">Sub Total</td>
-                        <td> Rp {{ number_format($totals, 0, ',', '.') }},00</td>
+                        <td> Rp 1.332.162.448,00</td>
                     </tr>
                     <tr>
-                        <td colspan="3" class="text-right pe-4">Tax Total {{ $tax }}%</td>
-                        <td> Rp {{ number_format(round(($totals*$tax)/100), 0, ',', '.') }},00</td>
+                        <td colspan="3" class="text-right pe-4">Tax Total 10%</td>
+                        <td> Rp 133.216.245,00</td>
                     </tr>
                     <tr>
                         <td colspan="3" class="text-right pe-4">Grand Total</td>
-                        <td> Rp {{ number_format(round(($totals*($tax+100))/100), 0, ',', '.') }},00</td>
+                        <td> Rp 1.465.378.693,00</td>
                     </tr>
                 </tbody>
             </table>
@@ -219,7 +227,7 @@
         </div>
 
         <div class="body-section">
-            <p>&copy; Copyright 20{{ date('y') }} - Meksiko. All rights reserved.</p>
+            <p>&copy; Copyright 2024 - Meksiko. All rights reserved.</p>
         </div>
     </div>
 
