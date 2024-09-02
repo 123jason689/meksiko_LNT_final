@@ -1,0 +1,45 @@
+
+
+.card-logo{
+	width:5vw;
+	height:auto;
+	background-color: #58BAE0;
+    border-radius: 50%;
+    margin: 20px 0px 10px 0px;
+}
+
+.card-logo img{
+	width:5vw;
+	height:auto;
+
+}
+
+.form-control{
+	border: 2px black solid;
+	border-radius: 5em;
+	background-color:#58b9e06b;
+}
+
+.form-control:focus{
+	background-color:#58b9e06b;
+}
+
+.card{
+	border: 4px black solid;
+
+}
+
+.btn-submit{
+	margin-top: 1em;
+	font-size:1.5em;
+	padding:0.3em 1em 0.3em 1em;
+	border-radius: 5rem;
+	background-color:#51cbfcf0;
+	transition:0.3s;
+	text-align:center;
+}
+
+.btn-submit:hover{
+	background-color: #7dbfd976;
+	letter-spacing: 0.2em;
+}

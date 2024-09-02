@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facture INV-20240829-1540003</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    
+    
+    <link rel="stylesheet" href="C:\Users\jason\Documents\Programming Project\Laravel\LNT FInal\meksiko_LNT_final\public\css/main.css">
+    <link rel="stylesheet" href="C:\Users\jason\Documents\Programming Project\Laravel\LNT FInal\meksiko_LNT_final\public\css/fonts.css">
+    <style>
+        body{
+            background-color: #F6F6F6;
+            margin: 0;
+            padding: 0;
+        }
+        h1,h2,h3,h4,h5,h6{
+            margin: 0;
+            padding: 0;
+        }
+        p{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 80%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .brand-section{
+           background-color: #E0D958;
+           padding: 10px 40px;
+        }
+        .logo{
+            width: 50%;
+        }
+
+        .row{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .col-6{
+            width: 50%;
+            flex: 0 0 auto;
+        }
+        .text-white{
+            color: #fff;
+        }
+        .company-details{
+            float: right;
+            text-align: right;
+        }
+        .body-section{
+            padding: 16px;
+            border: 1px solid gray;
+        }
+        .heading{
+            font-size: 20px;
+            margin-bottom: 08px;
+        }
+        .sub-heading{
+            color: #262626;
+            margin-bottom: 05px;
+        }
+        table{
+            background-color: #fff;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table thead tr{
+            border: 1px solid #111;
+            background-color: #f2f2f2;
+        }
+        table td {
+            vertical-align: middle !important;
+            text-align: center;
+        }
+        table th, table td {
+            padding-top: 08px;
+            padding-bottom: 08px;
+        }
+        .table-bordered{
+            box-shadow: 0px 0px 5px 0.5px gray;
+        }
+        .table-bordered td, .table-bordered th {
+            border: 1px solid #dee2e6;
+        }
+        .text-right{
+            text-align: end;
+        }
+        .w-20{
+            width: 20%;
+        }
+        .float-right{
+            float: right;
+        }
+
+        #brandf{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #brandf h1{
+            display: inline;
+            font-size: 4.5em;
+            margin-left: 70px;
+            width: 120px;
+        }
+
+        #mainlogof{
+            width: 80px;
+
+        }
+        /* gtw knp kalo do print di dom pdf display flex tidak bekerja ditulisnya gak support*/
+        #logocontf{
+            width: 80px;
+            height: 80px;
+            /* height: auto; */
+            background-color: #58BAE0;
+            border-radius: 50%;
+            /* margin: 0; */
+            position: absolute;
+            left: 100px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="brand-section">
+            <div class="row">
+                <div class="col-6">
+                    <div id="brandf" class="">
+                        <div id="logocontf" class="">
+                            <img src="C:\Users\jason\Documents\Programming Project\Laravel\LNT FInal\meksiko_LNT_final\public\img/main-logo.png" alt="Logo mexico" id="mainlogof" class="">
+                        </div>
+                        <h1 class="protest-g ">Meksiko</h1>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="company-details mt-4">
+                        <p class="">Empowering Warehouse</p>
+                        <p class="">Right From The Web</p>
+                        <p class="">+62 812-696-969</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="body-section">
+            <div class="row">
+                <div class="col-6">
+                    <h2 class="heading text-truncate">Invoice No.: INV-20240829-1540003</h2>
+                    
+                    <p class="sub-heading text-truncate">Order Date: Thursday, 29-08-2024 </p>
+                    <p class="sub-heading text-truncate">Email Address: jasmirldoge@gmail.com </p>
+                </div>
+                <div class="col-6">
+                    <p class="sub-heading text-truncate">Full Name: Jason Melvin Hartono </p>
+                    <p class="sub-heading">Address: Jl. Mozart Utara 2 No.35, Medang, Kec. Pagedangan, Kabupaten Tangerang, Banten 15334 </p>
+                    <p class="sub-heading text-truncate">Postal Code: 10003 </p>
+                    <p class="sub-heading text-truncate">Phone Number: 081290773928 </p>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="body-section">
+            <h3 class="heading text-truncate">Ordered Items</h3>
+            <br>
+            <table class="table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th class="w-20 ">Price</th>
+                        <th class="w-20">Quantity</th>
+                        <th class="w-20">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                                                                        <tr>
+                                
+                                <td class="text-truncate">accusantium quia</td>
+                                <td class="text-truncate">Rp 55.615.652,00</td>
+                                <td class="text-truncate">5</td>
+                                <td class="text-truncate">Rp 278.078.260,00</td>
+                            </tr>
+                                                    <tr>
+                                
+                                <td class="text-truncate">beatae officiis neque ut exercitationem ullam</td>
+                                <td class="text-truncate">Rp 80.448.562,00</td>
+                                <td class="text-truncate">6</td>
+                                <td class="text-truncate">Rp 482.691.372,00</td>
+                            </tr>
+                                                    <tr>
+                                
+                                <td class="text-truncate">saepe occaecati ut laborum</td>
+                                <td class="text-truncate">Rp 95.232.136,00</td>
+                                <td class="text-truncate">6</td>
+                                <td class="text-truncate">Rp 571.392.816,00</td>
+                            </tr>
+                                                                <tr>
+                        <td colspan="3" class="text-right pe-4">Sub Total</td>
+                        <td> Rp 1.332.162.448,00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-right pe-4">Tax Total 10%</td>
+                        <td> Rp 133.216.245,00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-right pe-4">Grand Total</td>
+                        <td> Rp 1.465.378.693,00</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <h3 class="heading">Payment Status: Awaiting</h3>
+            <h3 class="heading">Payment Mode: Cash on Delivery</h3>
+        </div>
+
+        <div class="body-section">
+            <p>&copy; Copyright 2024 - Meksiko. All rights reserved.</p>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

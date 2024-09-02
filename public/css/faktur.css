@@ -1,0 +1,78 @@
+.facture-container
+{
+    border: 3px solid black;
+    border-radius: 2rem;
+    overflow: hidden;
+}
+
+.facture-header{
+    border-right: 2px solid rgba(128, 128, 128, 0.097);
+}
+
+.head-row
+{
+    border-bottom: 2px solid rgba(128, 128, 128, 0.097);
+}
+
+.headers{
+    border-bottom: 2px solid rgba(128, 128, 128, 0.507);
+}
+
+.totals{
+    border-top: 2px solid rgba(128, 128, 128, 0.507);
+}
+
+.img-col{
+    height: 15em;
+    width: 15em;
+    overflow: hidden;
+    border-radius: 1em;
+}
+
+.card-item{
+    border-radius: 1em;
+}
+
+.cbox{
+    width: 2em;
+    height: 2em;
+    color: rgba(128, 128, 128, 0.717);
+}
+
+.reds{
+    color: red;
+}
+
+.scrollable{
+    height: 64vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.history{
+    height: 17vh;
+    width: 17vh;
+    position: absolute;
+    text-decoration: none;
+    color: black;
+    transition: 0.3s;
+    border-radius: 100%;
+}
+
+.history:hover{
+    color: rgb(147, 147, 147);
+}
+
+.history i{
+    font-size: 5em;
+    line-height: 90%;
+}
+
+.history h1{
+    font-size: 2em;
+    line-height: 95%;
+    user-select: none;
+}
+
+
+
